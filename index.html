@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <title>Mērvienību pārveidotājs</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .tab {
+      overflow: hidden;
+      border-bottom: 1px solid #ccc;
+    }
+    .tab button {
+      background-color: #f1f1f1;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+    }
+    .tab button:hover {
+      background-color: #ddd;
+    }
+    .tab button.active {
+      background-color: #ccc;
+    }
+    .tabcontent {
+      display: none;
+      padding: 20px 0;
+    }
+    .tabcontent.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mērvienību pārveidotājs</h1>
+  <h2>Izvēlies ko pārveidot</h2>
+
+  <div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Garums')">Garums</button>
+    <button class="tablinks" onclick="openTab(event, 'Atrums')">Ātrums</button>
+    <button class="tablinks" onclick="openTab(event, 'Temperatura')">Temperatūra</button>
+  </div>
+
+  <div id="Garums" class="tabcontent">
+    <section></section>
+    <h2>Garuma pārveidotājs</h2>
+    <input type="number" id="garums" placeholder="Ievadi garumu">
+    <select id="nogar">
+        <optgroup label="Eiropas standarti">
+          <option value="mm">Milimetri</option>
+          <option value="cm">Centimetri</option>
+          <option value="dm">Decimetri</option>
+          <option value="m">Metri</option>
+          <option value="km">Kilometri</option>
+        </optgroup>
+        <optgroup label="Imperiālie standarti">
+          <option value="in">Collas</option>
+          <option value="ft">Pēdas</option>
+          <option value="yd">Jardi</option>
+          <option value="mi">Jūdzes</option>
+          <option value="nmi">Jūras jūdzes</option>
+        </optgroup>
+    </select>
+    <select id="uzgar">
+        <optgroup label="Eiropas standarti">
+          <option value="mm">Milimetri</option>
+          <option value="cm">Centimetri</option>
+          <option value="dm">Decimetri</option>
+          <option value="m">Metri</option>
+          <option value="km">Kilometri</option>
+        </optgroup>
+        <optgroup label="Imperiālie standarti">
+          <option value="in">Collas</option>
+          <option value="ft">Pēdas</option>
+          <option value="yd">Jardi</option>
+          <option value="mi">Jūdzes</option>
+          <option value="nmi">Jūras jūdzes</option>
+      </optgroup>
+    </select>
+    <button onclick="convertLength()">Pārveidot</button>
+    <p id="rezGarums"></p>
+</section>
+  </div>
+
+  <div id="Atrums" class="tabcontent">
+    <section>
+    <h2>Ātruma pārveidotājs</h2>
+    <input type="number" id="atrums" placeholder="Ievadi ātrumu">
+    <select id="noatr">
+        <optgroup label="Eiropas standarti">
+      <option value="ms">m/s</option>
+      <option value="kmh">km/h</option>
+      <option value="cms">cm/s</option>
+</optgroup>
+        <optgroup label="Imperiālie standarti">
+      <option value="mph">mph</option>
+      <option value="fps">ft/s</option>
+      <option value="ips">inch/sek</option>
+      <option value="yds">jardi/sek</option>
+</optgroup>
+<optgroup label="SI standarti">
+      <option value="knot">Mezgli</option>
+      <option value="mach">Mach</option>
+      <option value="c">Gaismas ātrums</option>
+</optgroup>
+    </select>
+    <select id="uzatr">
+      <optgroup label="Eiropas standarti">
+      <option value="ms">m/s</option>
+      <option value="kmh">km/h</option>
+      <option value="cms">cm/s</option>
+</optgroup>
+        <optgroup label="Imperiālie standarti">
+      <option value="mph">mph</option>
+      <option value="fps">ft/s</option>
+      <option value="ips">inch/sek</option>
+      <option value="yds">jardi/sek</option>
+</optgroup>
+<optgroup label="SI standarti">
+      <option value="knot">Mezgli</option>
+      <option value="mach">Mach</option>
+      <option value="c">Gaismas ātrums</option>
+        </optgroup>
+    </select>
+    <button onclick="convertSpeed()">Pārveidot</button>
+    <p id="rezAtrums"></p>
+  </section>
+  </div>
+
+  <div id="Temperatura" class="tabcontent">
+    <section>
+    <h2>Temperatūras pārveidotājs</h2>
+    <input type="number" id="temp" placeholder="Ievadi temperatūru">
+    <select id="notemp">
+        <optgroup label="Pazīstamākās mērvienības">
+      <option value="C">Celsija</option>
+      <option value="F">Fārenheita</option>
+      <option value="K">Kelvina</option>
+      </optgroup>
+      <optgroup label="Mazāk pazīstamas mērvienības">
+      <option value="R">Rankina</option>
+      <option value="Re">Reomūra</option>
+      <option value="N">Ņūtona</option>
+      <option value="De">Delisla</option>
+      <option value="Ro">Rømera</option>
+        </optgroup>
+
+    </select>
+    <select id="uztemp">
+      <option value="C">Celsija</option>
+      <option value="F">Fārenheita</option>
+      <option value="K">Kelvina</option>
+      <option value="R">Rankina</option>
+      <option value="Re">Reomūra</option>
+      <option value="N">Ņūtona</option>
+      <option value="De">Delisla</option>
+      <option value="Ro">Rømera</option>
+
+    </select>
+    <button onclick="convertTemperature()">Pārveidot</button>
+    <p id="rezTemp"></p>
+  </section>
+  </div>
+
+  <script>
+    function openTab(evt, tabName) {
+      const tabcontent = document.querySelectorAll(".tabcontent");
+      const tablinks = document.querySelectorAll(".tablinks");
+
+      tabcontent.forEach(content => content.classList.remove("active"));
+      tablinks.forEach(link => link.classList.remove("active"));
+
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+
+    
+    window.onload = () => {
+      document.querySelector(".tablinks").click();
+    }
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
